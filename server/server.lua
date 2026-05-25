@@ -39,6 +39,13 @@ RegisterCommand(Config.Command.Name, function(source, args)
         end
     end
 
+    if Config.Command.Cost > 0 then
+        if not Bridge.RemoveMoney(src, Config.Command.Cost, Config.Command.Account) then
+            Bridge.Notify(src, Config.Messages.NoMoney, 'error')
+            return
+        end
+    end
+
     -- Command logic here
     TriggerEvent("announcejob", job, msg)
     Bridge.Notify(src, Config.Messages.Success, 'success')

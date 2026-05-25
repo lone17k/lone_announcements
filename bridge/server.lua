@@ -32,6 +32,16 @@ if Bridge.Framework == "qb" then
         TriggerClientEvent('QBCore:Notify', src, msg, type)
     end
     
+    Bridge.RemoveMoney = function(src, amount, account)
+        local Player = QBCore.Functions.GetPlayer(src)
+        if Player then
+            if Player.Functions.RemoveMoney(account, amount, "job-announcement") then
+                return true
+            end
+        end
+        return false
+    end
+    
 elseif Bridge.Framework == "qbox" then
     Bridge.GetPlayerJob = function(src)
         local Player = exports.qbx_core:GetPlayer(src)
@@ -43,6 +53,16 @@ elseif Bridge.Framework == "qbox" then
     
     Bridge.Notify = function(src, msg, type)
         exports.qbx_core:Notify(src, msg, type)
+    end
+    
+    Bridge.RemoveMoney = function(src, amount, account)
+        local Player = exports.qbx_core:GetPlayer(src)
+        if Player then
+            if Player.Functions.RemoveMoney(account, amount, "job-announcement") then
+                return true
+            end
+        end
+        return false
     end
     
 elseif Bridge.Framework == "esx" then
@@ -60,6 +80,18 @@ elseif Bridge.Framework == "esx" then
         TriggerClientEvent('esx:showNotification', src, msg)
     end
     
+    Bridge.RemoveMoney = function(src, amount, account)
+        local xPlayer = ESX.GetPlayerFromId(src)
+        if xPlayer then
+            if account == "cash" then account = "money" end
+            if xPlayer.getAccount(account).money >= amount then
+                xPlayer.removeAccountMoney(account, amount)
+                return true
+            end
+        end
+        return false
+    end
+    
 elseif Bridge.Framework == "custom" then
     -- CUSTOM FRAMEWORK LOGIC
     Bridge.GetPlayerJob = function(src)
@@ -70,5 +102,10 @@ elseif Bridge.Framework == "custom" then
     Bridge.Notify = function(src, msg, type)
         -- Add your custom framework notification logic here
         print("Notification for player " .. tostring(src) .. ": " .. tostring(msg))
+    end
+    
+    Bridge.RemoveMoney = function(src, amount, account)
+        -- Add your custom framework money removal logic here
+        return true
     end
 end

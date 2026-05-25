@@ -6,12 +6,15 @@ Config.Framework = "auto"
 
 Config.Command = {
     Name = "jobad", -- The command name to use for announcements
-    Cooldown = 2, -- Cooldown duration in seconds per job
+    Cooldown = 600, -- Cooldown duration in seconds per job
+    Cost = 500, -- Cost to put up an ad (Set to 0 to make it free)
+    Account = "bank", -- Which account to take money from: "bank" or "cash" (ESX uses "money" for cash automatically)
 }
 
 Config.Messages = {
     NoMessage = "No message provided",
     NoJob = "You must have a job to use this command.",
+    NoMoney = "You don't have enough money to place an ad.",
     Cooldown = "Your job must wait %s seconds before using this command again.",
     Success = "Announcement made successfully!"
 }
@@ -25,6 +28,7 @@ Config.UI = {
     DefaultImage = "https://cdn.discordapp.com/attachments/1190180709973893221/1490710431659200673/lonedev.png?ex=6a14fc86&is=6a13ab06&hm=277a3f2e94cfee8f24cb97a1e3da3e9b0cd8eb86eb0719548d46d0d41c0842c8&", -- Default logo if the job doesn't have one
     DefaultSound = "notify.ogg", -- Default sound if the job doesn't have one
 }
+
 
 Config.Jobs = {
     ['police'] = {
