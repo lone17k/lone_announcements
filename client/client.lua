@@ -8,6 +8,7 @@ AddEventHandler('announceJob', function(job, message)
         local jobName = job
         local imageUrl = Config.UI.DefaultImage
         local sound = Config.UI.DefaultSound
+        local volume = Config.UI.DefaultVolume or 0.4
         local borderColor = Config.UI.DefaultBorderColor
         local titleColor = Config.UI.DefaultTitleColor
 
@@ -15,6 +16,7 @@ AddEventHandler('announceJob', function(job, message)
             jobName = jobData.name or job
             imageUrl = jobData.image or Config.UI.DefaultImage
             sound = jobData.sound or Config.UI.DefaultSound
+            volume = jobData.volume or Config.UI.DefaultVolume or 0.4
             borderColor = jobData.borderColor or Config.UI.DefaultBorderColor
             titleColor = jobData.titleColor or Config.UI.DefaultTitleColor
         end
@@ -25,6 +27,7 @@ AddEventHandler('announceJob', function(job, message)
             message = message,
             image = imageUrl,
             sound = sound,
+            volume = volume,
             duration = Config.UI.Duration,
             borderColor = borderColor,
             backgroundColor = Config.UI.BackgroundColor,

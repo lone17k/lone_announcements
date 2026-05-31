@@ -6,6 +6,7 @@ interface JobAnnouncementData {
   message: string;
   image: string;
   sound: string;
+  volume?: number;
   duration?: number;
   borderColor?: string;
   backgroundColor?: string;
@@ -39,7 +40,7 @@ function App() {
         setTimestamp(timeString);
         
         const audioPlayer = new Howl({ src: ['sounds/' + data.sound] });
-        audioPlayer.volume(0.4);
+        audioPlayer.volume(data.volume !== undefined ? data.volume : 0.4);
         audioPlayer.play();
         
         const duration = data.duration || 10000;

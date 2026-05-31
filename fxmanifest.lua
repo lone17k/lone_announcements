@@ -7,12 +7,12 @@ version '1.0.0'
 lua54 'yes'
 
 client_scripts {
-    'bridge/client.lua',
+    'bridge/client/client.lua',
     'client/client.lua',
 }
 
 server_scripts {
-    'bridge/server.lua',
+    'bridge/server/server.lua',
     'server/server.lua',
 }
 

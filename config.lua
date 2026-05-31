@@ -27,6 +27,7 @@ Config.UI = {
     DefaultTitleColor = "#00f0ff", -- Default Color for the job title
     DefaultImage = "https://cdn.discordapp.com/attachments/1190180709973893221/1490710431659200673/lonedev.png?ex=6a14fc86&is=6a13ab06&hm=277a3f2e94cfee8f24cb97a1e3da3e9b0cd8eb86eb0719548d46d0d41c0842c8&", -- Default logo if the job doesn't have one
     DefaultSound = "notify.ogg", -- Default sound if the job doesn't have one
+    DefaultVolume = 0.4, -- Default volume for the sound (0.0 to 1.0)
 }
 
 
